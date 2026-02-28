@@ -13,7 +13,8 @@ import { callAIAgent } from '@/lib/aiAgent'
 import parseLLMJson from '@/lib/jsonParser'
 import { cn } from '@/lib/utils'
 import { VscWarning, VscShield, VscCheck } from 'react-icons/vsc'
-import { FiAlertTriangle, FiLoader, FiCheckCircle, FiSkull } from 'react-icons/fi'
+import { FiAlertTriangle, FiLoader, FiCheckCircle } from 'react-icons/fi'
+import { TbSkull } from 'react-icons/tb'
 
 interface RecommendedCommand {
   command: string
@@ -63,9 +64,9 @@ export default function FixReview({ commands, onFixComplete, setActiveAgentId }:
   const riskConfig: Record<string, { class: string; icon: React.ReactNode }> = {
     safe: { class: 'bg-green-800/50 text-green-400 border-green-600', icon: <FiCheckCircle className="w-3.5 h-3.5" /> },
     moderate: { class: 'bg-yellow-800/50 text-yellow-400 border-yellow-600', icon: <FiAlertTriangle className="w-3.5 h-3.5" /> },
-    destructive: { class: 'bg-red-800/50 text-red-400 border-red-600', icon: <FiSkull className="w-3.5 h-3.5" /> },
+    destructive: { class: 'bg-red-800/50 text-red-400 border-red-600', icon: <TbSkull className="w-3.5 h-3.5" /> },
     low: { class: 'bg-green-800/50 text-green-400 border-green-600', icon: <FiCheckCircle className="w-3.5 h-3.5" /> },
-    high: { class: 'bg-red-800/50 text-red-400 border-red-600', icon: <FiSkull className="w-3.5 h-3.5" /> },
+    high: { class: 'bg-red-800/50 text-red-400 border-red-600', icon: <TbSkull className="w-3.5 h-3.5" /> },
   }
 
   const approvedCommands = commands.filter((_, i) => approvedMap[i])
@@ -173,7 +174,7 @@ Generate a step-by-step execution plan with proper ordering and safety notes.`
             <Card key={i} className={cn('bg-card border-border', isDestructive && 'border-red-600/50')}>
               {isDestructive && (
                 <div className="bg-red-900/30 border-b border-red-600/50 px-4 py-2 flex items-center gap-2">
-                  <FiSkull className="w-4 h-4 text-red-400" />
+                  <TbSkull className="w-4 h-4 text-red-400" />
                   <span className="text-xs text-red-400 font-mono">DESTRUCTIVE COMMAND - REVIEW CAREFULLY</span>
                 </div>
               )}
@@ -277,7 +278,7 @@ Generate a step-by-step execution plan with proper ordering and safety notes.`
         <DialogContent className="bg-card border-border text-foreground font-mono">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 text-red-400">
-              <FiSkull className="w-5 h-5" />
+              <TbSkull className="w-5 h-5" />
               DESTRUCTIVE OPERATION DETECTED
             </DialogTitle>
             <DialogDescription className="text-muted-foreground text-xs space-y-2">

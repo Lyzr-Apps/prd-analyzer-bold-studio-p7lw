@@ -18,6 +18,11 @@ const config = {
   		}
   	},
   	extend: {
+  		fontFamily: {
+  			mono: ['var(--font-mono)', 'JetBrains Mono', 'Fira Code', 'monospace'],
+  			sans: ['var(--font-mono)', 'JetBrains Mono', 'Fira Code', 'monospace'],
+  			serif: ['var(--font-mono)', 'JetBrains Mono', 'Fira Code', 'monospace'],
+  		},
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',

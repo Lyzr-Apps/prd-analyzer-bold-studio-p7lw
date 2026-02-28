@@ -1,16 +1,16 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import { IframeLoggerInit } from '@/components/IframeLoggerInit'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import { AgentInterceptorProvider } from '@/components/AgentInterceptorProvider'
 
-const inter = Inter({ subsets: ['latin'] })
+const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 export const metadata: Metadata = {
-  title: 'Next.js App',
-  description: 'Built with Next.js, React, and Tailwind CSS',
+  title: 'Motadata Service Troubleshooter',
+  description: 'SSH-based service troubleshooting agent for Motadata',
   icons: {
     icon: '/lyzr.png',
   },
@@ -24,7 +24,7 @@ export default function RootLayout({
   const isPaidUser = process.env.IS_PAID_USER === 'true'
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={`${jetbrainsMono.variable} font-mono`} suppressHydrationWarning>
         <IframeLoggerInit />
         <ErrorBoundary>
           <AgentInterceptorProvider>
