@@ -1,0 +1,72 @@
+{
+  "workflow_name": "Motadata Service Troubleshooter",
+  "pattern": "multiple_independent_agents",
+  "agents": [
+    {
+      "agent_name": "Diagnosis Agent",
+      "agent_id": "69a29468e5f04a341499c699",
+      "model": "gpt-5.2",
+      "provider": "openai",
+      "temperature": 0.2,
+      "top_p": 1,
+      "capabilities": {
+        "image_output": false,
+        "voice": false,
+        "file_output": false,
+        "knowledge_base": false,
+        "tools": false,
+        "scheduled": false
+      },
+      "response_schema_file": "response_schemas/diagnosis_agent.json"
+    },
+    {
+      "agent_name": "Fix Execution Agent",
+      "agent_id": "69a29468e72641e0c6070ba2",
+      "model": "gpt-5.2",
+      "provider": "openai",
+      "temperature": 0.1,
+      "top_p": 1,
+      "capabilities": {
+        "image_output": false,
+        "voice": false,
+        "file_output": false,
+        "knowledge_base": false,
+        "tools": false,
+        "scheduled": false
+      },
+      "response_schema_file": "response_schemas/fix_execution_agent.json"
+    },
+    {
+      "agent_name": "Health Monitor Agent",
+      "agent_id": "69a29468e5f04a341499c69b",
+      "model": "gpt-4.1",
+      "provider": "openai",
+      "temperature": 0.2,
+      "top_p": 1,
+      "capabilities": {
+        "image_output": false,
+        "voice": false,
+        "file_output": false,
+        "knowledge_base": false,
+        "tools": false,
+        "scheduled": false
+      },
+      "response_schema_file": "response_schemas/health_monitor_agent.json"
+    }
+  ],
+  "workflow": {
+    "nodes": [
+      {"id": "input_node", "type": "Input", "label": "Service Data Input", "nodeCategory": "input"},
+      {"id": "diagnosis_agent", "type": "Agent", "label": "Diagnosis Agent", "nodeCategory": "agent"},
+      {"id": "fix_execution_agent", "type": "Agent", "label": "Fix Execution Agent", "nodeCategory": "agent"},
+      {"id": "health_monitor_agent", "type": "Agent", "label": "Health Monitor Agent", "nodeCategory": "agent"},
+      {"id": "output_node", "type": "Output", "label": "Troubleshooter Output", "nodeCategory": "end"}
+    ],
+    "edges": [
+      {"source": "input_node", "target": "diagnosis_agent"},
+      {"source": "diagnosis_agent", "target": "fix_execution_agent"},
+      {"source": "fix_execution_agent", "target": "health_monitor_agent"},
+      {"source": "health_monitor_agent", "target": "output_node"}
+    ]
+  }
+}

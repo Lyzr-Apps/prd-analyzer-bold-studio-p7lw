@@ -1,0 +1,40 @@
+{
+  "agent_name": "Health Monitor Agent",
+  "agent_id": "69a29468e5f04a341499c69b",
+  "description": "Interprets service status and worker health check outputs (motadata app, datastore, bootstrap). Reports whether all three workers are running, flags any degraded or stopped workers, and recommends next steps if recovery is incomplete.",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "overall_status": "string",
+    "workers": [
+      {
+        "name": "string",
+        "status": "string",
+        "details": "string"
+      }
+    ],
+    "service_status_raw": "string",
+    "interpretation": "string",
+    "all_workers_running": "boolean",
+    "recommendations": [
+      "string"
+    ]
+  },
+  "example_response": {
+    "overall_status": "sample string",
+    "workers": [
+      {
+        "name": "sample string",
+        "status": "sample string",
+        "details": "sample string"
+      }
+    ],
+    "service_status_raw": "sample string",
+    "interpretation": "sample string",
+    "all_workers_running": false,
+    "recommendations": [
+      "sample string"
+    ]
+  }
+}

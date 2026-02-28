@@ -1,0 +1,50 @@
+{
+  "agent_name": "Diagnosis Agent",
+  "agent_id": "69a29468e5f04a341499c699",
+  "agent_type": "json",
+  "accessor": "json",
+  "has_module_outputs": false,
+  "response_schema": {
+    "root_cause": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["critical", "high", "medium", "low"]
+    },
+    "affected_components": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "diagnosis_details": {
+      "type": "string"
+    },
+    "recommended_commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "risk_level": {
+            "type": "string",
+            "enum": ["safe", "moderate", "destructive"]
+          }
+        },
+        "required": ["command", "description", "risk_level"]
+      }
+    },
+    "log_analysis": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    }
+  }
+}

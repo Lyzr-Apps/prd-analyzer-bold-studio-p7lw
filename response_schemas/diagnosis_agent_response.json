@@ -1,0 +1,42 @@
+{
+  "agent_name": "Diagnosis Agent",
+  "agent_id": "69a29468e5f04a341499c699",
+  "description": "Analyzes service status output, log file contents, and config file data passed as context. Identifies root causes for service crashes and network connectivity issues. Produces structured diagnosis with severity, affected components, and recommended fix commands.",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "root_cause": "string",
+    "severity": "string",
+    "affected_components": [
+      "string"
+    ],
+    "diagnosis_details": "string",
+    "recommended_commands": [
+      {
+        "command": "string",
+        "description": "string",
+        "risk_level": "string"
+      }
+    ],
+    "log_analysis": "string",
+    "summary": "string"
+  },
+  "example_response": {
+    "root_cause": "sample string",
+    "severity": "sample string",
+    "affected_components": [
+      "sample string"
+    ],
+    "diagnosis_details": "sample string",
+    "recommended_commands": [
+      {
+        "command": "sample string",
+        "description": "sample string",
+        "risk_level": "sample string"
+      }
+    ],
+    "log_analysis": "sample string",
+    "summary": "sample string"
+  }
+}

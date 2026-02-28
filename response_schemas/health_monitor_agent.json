@@ -1,0 +1,47 @@
+{
+  "agent_name": "Health Monitor Agent",
+  "agent_id": "69a29468e5f04a341499c69b",
+  "agent_type": "json",
+  "accessor": "json",
+  "has_module_outputs": false,
+  "response_schema": {
+    "overall_status": {
+      "type": "string",
+      "enum": ["healthy", "degraded", "critical", "unknown"]
+    },
+    "workers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["running", "stopped", "degraded", "unknown"]
+          },
+          "details": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "status", "details"]
+      }
+    },
+    "service_status_raw": {
+      "type": "string"
+    },
+    "interpretation": {
+      "type": "string"
+    },
+    "all_workers_running": {
+      "type": "boolean"
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "agent_name": "Fix Execution Agent",
+  "agent_id": "69a29468e72641e0c6070ba2",
+  "agent_type": "json",
+  "accessor": "json",
+  "has_module_outputs": false,
+  "response_schema": {
+    "validation_status": {
+      "type": "string",
+      "enum": ["approved", "requires_confirmation", "rejected"]
+    },
+    "execution_plan": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step": {
+            "type": "number"
+          },
+          "command": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "risk_level": {
+            "type": "string",
+            "enum": ["safe", "moderate", "destructive"]
+          },
+          "is_destructive": {
+            "type": "boolean"
+          },
+          "safety_notes": {
+            "type": "string"
+          }
+        },
+        "required": ["step", "command", "description", "risk_level", "is_destructive", "safety_notes"]
+      }
+    },
+    "destructive_commands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "safety_summary": {
+      "type": "string"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

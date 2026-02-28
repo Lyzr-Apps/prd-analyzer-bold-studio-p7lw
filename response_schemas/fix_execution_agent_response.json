@@ -1,0 +1,48 @@
+{
+  "agent_name": "Fix Execution Agent",
+  "agent_id": "69a29468e72641e0c6070ba2",
+  "description": "Reviews user-approved commands, validates them against a safety checklist (flags destructive commands like rm -rf, config overwrites), generates a step-by-step execution plan with exact commands, and returns the validated plan for backend execution.",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "validation_status": "string",
+    "execution_plan": [
+      {
+        "step": "number",
+        "command": "string",
+        "description": "string",
+        "risk_level": "string",
+        "is_destructive": "boolean",
+        "safety_notes": "string"
+      }
+    ],
+    "destructive_commands": [
+      "string"
+    ],
+    "safety_summary": "string",
+    "warnings": [
+      "string"
+    ]
+  },
+  "example_response": {
+    "validation_status": "sample string",
+    "execution_plan": [
+      {
+        "step": 0,
+        "command": "sample string",
+        "description": "sample string",
+        "risk_level": "sample string",
+        "is_destructive": false,
+        "safety_notes": "sample string"
+      }
+    ],
+    "destructive_commands": [
+      "sample string"
+    ],
+    "safety_summary": "sample string",
+    "warnings": [
+      "sample string"
+    ]
+  }
+}
